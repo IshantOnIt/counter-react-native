@@ -13,18 +13,31 @@ export default function Index() {
     setCount(count - 1);
   }
 
+  function reset() {
+    setCount(0);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{count}</Text>
       <View style={styles.buttonsContainer}>
-        <View style={styles.button}>
-          <Pressable onPress={increment}>
-            <MaterialIcons name="add" size={32} color="#333" />
-          </Pressable>
+        <View style={{ flexDirection: "row", gap: 16 }}>
+          <View style={styles.button}>
+            <Pressable onPress={increment}>
+              <MaterialIcons name="add" size={32} color="#333" />
+            </Pressable>
+          </View>
+          <View style={styles.button}>
+            <Pressable onPress={decrement}>
+              <MaterialIcons name="remove" size={32} color="#333" />
+            </Pressable>
+          </View>
         </View>
         <View style={styles.button}>
-          <Pressable onPress={decrement}>
-            <MaterialIcons name="remove" size={32} color="#333" />
+          <Pressable onPress={reset}>
+            <Text style={{ color: "#333", fontSize: 24, padding: 8 }}>
+              Reset
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -47,10 +60,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   buttonsContainer: {
-    flexDirection: "row",
     flexWrap: "wrap",
-    gap: 24,
+    gap: 16,
     justifyContent: "center",
+    alignItems: "center",
   },
   button: {
     backgroundColor: "#eee",
